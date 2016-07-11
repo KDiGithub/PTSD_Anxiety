@@ -62,16 +62,14 @@ function newTriggers(){
 }
 
 function newHelp(id){
-	var i=0, arr=[], g=false, c=false, ch=false, a=true;
+	var i=0, arr=[], g=false, nh=false;
 	var d=new Date(), day=d.getDate(), month=d.getMonth() + 1, year=d.getFullYear();
 	console.log(d);
 	
 	if (id=="good") g=true;
-	if (id=="contacts") c=true;
-	if (id=="chat") ch=true;
-	if (id=="anxiety") a=true;
-
-	arr[i]= {good: g, contacts: c, chat: ch, anxiety:a, 
+	if (id=="need_help") nh=true;
+	
+	arr[i]= {good: g, need_help: nh,
 				date: {year:year, month:month, day:day}};  
 	setFile(storeGB, arr[i]);	
 	i++;
