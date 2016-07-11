@@ -3,6 +3,7 @@ function code(id){
 		'<div id="menu_'+id+'" data-role="navbar">'+
 			'<button onclick="Menu('+id+')">Меню</button>'+
 			'<ul id="menu'+id+'" style="display:none;">'+
+				'<li><a href="#main">Главная страница</a></li>'+
 				'<li><a href="#info">Общая информация</a></li>'+
 				'<!-- <li>___</li> -->'+
 				'<li><a href="#out">Вывод данных</a></li>'+

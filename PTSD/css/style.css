@@ -22,7 +22,7 @@ body {
 
 #chatarea{
 	overflow: auto;
-	resize: none;
+	/* resize: none; */
 }
 
 #content-text {

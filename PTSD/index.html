@@ -25,18 +25,20 @@
 
 <body>
 
-<!-- ГЛАВНАЯ СТРАНИЦА -->
+<!-- ГЛАВНАЯ СТРАНИЦА (запись приступа?)-->
     <div data-role="page" id="main" align="center">
     	<script> code("1"); </script>
         <div class="contents">
 			<p>Привет. Рад тебя видеть.</p>
 			<p>Как ты себя чувствуешь?</p>
-			<p><a href="#good" data-role="button">Все хорошо</a></p>	
-			<p><a href="#bad" data-role="button">Нужна помощь</a></p>			
+			<p><a href="#good" data-role="button" onClick="newHelp('good')">Все хорошо</a></p>	
+			<p><a href="#contacts" data-role="button" onClick="contactList(); newHelp('contacts')">Связаться с контактом</a></p>
+				<p><a href="#chat" data-role="button" onClick="newHelp('chat')">Чат</a></p>
+				<p><a href="#anxiety" data-role="button" onClick="newHelp('anxiety')">Паническая атака</a></p>			
         </div>
     </div>
     
-<!-- ОТВЕТ: хорошо (ответ в базу, предложение заглянуть в меню) -->    
+<!-- ОТВЕТ: хорошо (предложение заглянуть в меню) -->    
     <div data-role="page" id="good" align="center">
     	<script> code("2"); </script>
         <div class="contents">
@@ -45,19 +47,10 @@
         </div>
     </div>
    
-<!-- ОТВЕТ: помощь (ответ в базу, предложение связи/чата/упражнения/ввод триггеров) -->    
-    <div data-role="page" id="bad" align="center">
-    	<script> code("3"); </script>
-        <div class="contents">
-				<p><a href="#contacts" data-role="button" onClick="contactList()">Связаться с контактом</a></p>
-				<p><a href="#chat" data-role="button">Чат</a></p>
-				<p><a href="#anxiety" data-role="button">Паническая атака</a></p>
-        </div>
-    </div>
    
 <!-- ОБЩАЯ ИНФОРМАЦИЯ -->    
     <div data-role="page" id="info" align="center">
-    	<script> code("4"); </script>
+    	<script> code("3"); </script>
         <div class="contents">
 			<p>INFO</p>
         </div>
@@ -65,7 +58,7 @@
     
 <!-- ВЫВОД ДАННЫХ (из базы, графики, предложение бэкапа) -->    
     <div data-role="page" id="out" align="center">
-    	<script> code("5"); </script>
+    	<script> code("4"); </script>
         <div class="contents">
 			<p>OUT</p>
         </div>
@@ -73,7 +66,7 @@
     
 <!-- ГОТОВО: ВВОД КОНТАКТА (ответ в базу) -->    
     <div data-role="page" id="contact-in" align="center">
-    	<script> code("6"); </script>
+    	<script> code("5"); </script>
         <div class="contents">
 			<p>
 				Имя контакта:<input id="contactname">
@@ -85,22 +78,22 @@
     
 <!-- ВВОД ТРИГГЕРА (ответ в базу) -->    
     <div data-role="page" id="trigger-in" align="center">
-    	<script> code("7"); </script>
+    	<script> code("6"); </script>
         <div class="contents">
-			<p>TRIGGER IN</p>
-			<label><input type=checkbox name="trigin" value="place">Место</label>
-			<label><input type=checkbox name="trigin" value="sound">Звук</label>
-			<label><input type=checkbox name="trigin" value="image">Визуальный образ</label>
-			<label><input type=checkbox name="trigin" value="smell">Запах</label>
-			<label><input type=checkbox name="trigin" value="touch">Прикосновение</label>
-			<label><input type=checkbox name="trigin" value="human">Человек</label>
-        	<input type=button value="Сохранить">
+			<p>Cписок триггеров:</p>
+			<label><input type=checkbox name="trigin" id="place">Место</label>
+			<label><input type=checkbox name="trigin" id="sound">Звук</label>
+			<label><input type=checkbox name="trigin" id="image">Визуальный образ</label>
+			<label><input type=checkbox name="trigin" id="smell">Запах</label>
+			<label><input type=checkbox name="trigin" id="touch">Прикосновение</label>
+			<label><input type=checkbox name="trigin" id="human">Человек</label>
+        	<input type=button value="Сохранить" onClick="newTriggers()">
         </div>
     </div>
     
 <!-- ГОТОВО: КОНТАКТЫ (из базы, звонок) -->    
     <div data-role="page" id="contacts" align="center">
-    	<script> code("8"); </script>
+    	<script> code("7"); </script>
     	<div class="contents">
     		<p>Экстренные контакты</p>
         	<div id="contactContent">
@@ -111,7 +104,7 @@
     
 <!-- ЧАТ -->    
     <div data-role="page" id="chat" align="center">
-    	<script> code("9"); </script>
+    	<script> code("8"); </script>
         <div class="contents">
 			<p>CHAT</p>
 			<textarea id="chatarea" cols="30" rows="10" readonly></textarea>
@@ -127,7 +120,7 @@
     
 <!-- УПРАЖНЕНИЕ ДЛЯ ДЫХАНИЯ (секундомер и информация) -->    
     <div data-role="page" id="anxiety" align="center">
-    	<script> code("10"); </script>
+    	<script> code("9"); </script>
         <div class="contents">
 			<p>ANXIETY</p>     
 			<input id="stopwatch" size=10 value="00:00" style="text-align:center">  

@@ -46,6 +46,36 @@ function contactList()
 	/*mess+='</ul>'
 	document.write(mess);*/
 }
+
+function newTriggers(){
+	var i=0, arr=[];
+	var d=new Date(), day=d.getDate(), month=d.getMonth() + 1, year=d.getFullYear();
+	console.log(d);
+
+	arr[i]= {place: $("#place").prop("checked"), sound: $("#sound").prop("checked"),
+				image: $("#image").prop("checked"), smell: $("#smell").prop("checked"),
+				touch: $("#touch").prop("checked"), human: $("#human").prop("checked"),
+				date: {year:year, month:month, day:day}};  
+	setFile(storeT, arr[i]);	
+	i++;
+		
+}
+
+function newHelp(id){
+	var i=0, arr=[], g=false, c=false, ch=false, a=true;
+	var d=new Date(), day=d.getDate(), month=d.getMonth() + 1, year=d.getFullYear();
+	console.log(d);
+	
+	if (id=="good") g=true;
+	if (id=="contacts") c=true;
+	if (id=="chat") ch=true;
+	if (id=="anxiety") a=true;
+
+	arr[i]= {good: g, contacts: c, chat: ch, anxiety:a, 
+				date: {year:year, month:month, day:day}};  
+	setFile(storeGB, arr[i]);	
+	i++;
+}
 			
 
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB,
