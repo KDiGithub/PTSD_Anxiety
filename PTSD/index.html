@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Tizen Mobile Web" />
+
+    <title>PTSD and anxiety</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="lib/jquery.mobile-1.4.5.min.css" />
+    
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/indexeddb.js"></script>
+    <script src="js/stopwatchANDchat.js"></script>
+    
+    <script src="lib/jquery.js"></script>
+    <script src="lib/jquery-2.0.0.min.js"></script>
+    <script src="lib/jquery.mobile-1.4.5.min.js"></script>
+   
+    
+</head>
+
+<body>
+
+<!-- ГЛАВНАЯ СТРАНИЦА -->
+    <div data-role="page" id="main" align="center">
+    	<script> code("1"); </script>
+        <div class="contents">
+			<p>Привет. Рад тебя видеть.</p>
+			<p>Как ты себя чувствуешь?</p>
+			<p><a href="#good" data-role="button">Все хорошо</a></p>	
+			<p><a href="#bad" data-role="button">Нужна помощь</a></p>			
+        </div>
+    </div>
+    
+<!-- ОТВЕТ: хорошо (ответ в базу, предложение заглянуть в меню) -->    
+    <div data-role="page" id="good" align="center">
+    	<script> code("2"); </script>
+        <div class="contents">
+			<p>Здорово, что ты справляешься.</p>
+			<p>Если тебе что-то нужно, можешь зайти в меню.</p>	
+        </div>
+    </div>
+   
+<!-- ОТВЕТ: помощь (ответ в базу, предложение связи/чата/упражнения/ввод триггеров) -->    
+    <div data-role="page" id="bad" align="center">
+    	<script> code("3"); </script>
+        <div class="contents">
+				<p><a href="#contacts" data-role="button" onClick="contactList()">Связаться с контактом</a></p>
+				<p><a href="#chat" data-role="button">Чат</a></p>
+				<p><a href="#anxiety" data-role="button">Паническая атака</a></p>
+        </div>
+    </div>
+   
+<!-- ОБЩАЯ ИНФОРМАЦИЯ -->    
+    <div data-role="page" id="info" align="center">
+    	<script> code("4"); </script>
+        <div class="contents">
+			<p>INFO</p>
+        </div>
+    </div>
+    
+<!-- ВЫВОД ДАННЫХ (из базы, графики, предложение бэкапа) -->    
+    <div data-role="page" id="out" align="center">
+    	<script> code("5"); </script>
+        <div class="contents">
+			<p>OUT</p>
+        </div>
+    </div>
+    
+<!-- ГОТОВО: ВВОД КОНТАКТА (ответ в базу) -->    
+    <div data-role="page" id="contact-in" align="center">
+    	<script> code("6"); </script>
+        <div class="contents">
+			<p>
+				Имя контакта:<input id="contactname">
+				Телефон:<input id="phonenum" type=tel>
+				<input type=button value="Сохранить" onClick="newContact()">
+			</p>
+        </div>
+    </div>
+    
+<!-- ВВОД ТРИГГЕРА (ответ в базу) -->    
+    <div data-role="page" id="trigger-in" align="center">
+    	<script> code("7"); </script>
+        <div class="contents">
+			<p>TRIGGER IN</p>
+			<label><input type=checkbox name="trigin" value="place">Место</label>
+			<label><input type=checkbox name="trigin" value="sound">Звук</label>
+			<label><input type=checkbox name="trigin" value="image">Визуальный образ</label>
+			<label><input type=checkbox name="trigin" value="smell">Запах</label>
+			<label><input type=checkbox name="trigin" value="touch">Прикосновение</label>
+			<label><input type=checkbox name="trigin" value="human">Человек</label>
+        	<input type=button value="Сохранить">
+        </div>
+    </div>
+    
+<!-- ГОТОВО: КОНТАКТЫ (из базы, звонок) -->    
+    <div data-role="page" id="contacts" align="center">
+    	<script> code("8"); </script>
+    	<div class="contents">
+    		<p>Экстренные контакты</p>
+        	<div id="contactContent">
+		
+        	</div>
+        </div>
+    </div>
+    
+<!-- ЧАТ -->    
+    <div data-role="page" id="chat" align="center">
+    	<script> code("9"); </script>
+        <div class="contents">
+			<p>CHAT</p>
+			<textarea id="chatarea" cols="30" rows="10" readonly></textarea>
+			<input id="chatin">
+			<input type=button id="addch" value="Добавить сообщение" onClick="addChat()">
+    		<select id="flip" data-role="flipswitch" onChange="changeCol(value)">
+      			<option value="one"></option>
+      			<option value="two"></option>
+    		</select>
+    		<input type=button id="clearch" value="Очистить чат" onClick="clearChat()">
+        </div>
+    </div>
+    
+<!-- УПРАЖНЕНИЕ ДЛЯ ДЫХАНИЯ (секундомер и информация) -->    
+    <div data-role="page" id="anxiety" align="center">
+    	<script> code("10"); </script>
+        <div class="contents">
+			<p>ANXIETY</p>     
+			<input id="stopwatch" size=10 value="00:00" style="text-align:center">  
+			<input type=button value="Запуск/Остановить" onclick="pause()"> 
+			<input type=button value="Обнулить" onclick="clearСlock()">
+        </div>
+    </div>
+    
+</body>
+
+</html>
