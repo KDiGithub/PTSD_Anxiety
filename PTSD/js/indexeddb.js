@@ -99,6 +99,10 @@ function outGB(){
 	
 function outcanvastr(){	
 	var p=0,s=0,i=0,sm=0,t=0,h=0,dp=0,ds=0,di=0,dsm=0,dt=0,dh=0;
+	removeChildren(triggleg);
+	
+	/*alert('p'+p+' s'+s+' i'+i+' sm'+sm+' t'+t+' h'+h);
+	alert('dp'+dp+' ds'+ds+' di'+di+' dsm'+dsm+' dt'+dt+' dh'+dh);*/
 	
 	getStorage(storeT, function(res){
 			for(var field in res){
@@ -113,6 +117,25 @@ function outcanvastr(){
 			/*alert('p'+p+' s'+s+' i'+i+' sm'+sm+' t'+t+' h'+h);
 			alert('dp'+dp+' ds'+ds+' di'+di+' dsm'+dsm+' dt'+dt+' dh'+dh);*/
 			
+			if(dp<17 && ds<17 && di<17 && dsm<17 && dt<17 && dh<17){
+				dp=dp*3;
+				ds=ds*3;
+				di=di*3;
+				dsm=dsm*3;
+				dt=dt*3;
+				dh=dh*3;
+			}
+			else if(dp<26 && ds<26 && di<26 && dsm<26 && dt<26 && dh<26){
+				dp=dp*2;
+				ds=ds*2;
+				di=di*2;
+				dsm=dsm*2;
+				dt=dt*2;
+				dh=dh*2;
+			}
+			
+			
+			/*alert('dp'+dp+' ds'+ds+' di'+di+' dsm'+dsm+' dt'+dt+' dh'+dh);*/
 			
 			var x=0, y=200;
 			var tr = document.getElementById("cantrig");
@@ -122,19 +145,19 @@ function outcanvastr(){
 			
 			ctx.fillStyle = "#129321";
 			ctx.fillRect(x,y,dp,-p);
-			x+=dp;
+			x+=dp+2;
 			ctx.fillStyle = "#438432";
 			ctx.fillRect(x,y,ds,-s);
-			x+=ds;
+			x+=ds+2;
 			ctx.fillStyle = "#347543";
 			ctx.fillRect(x,y,di,-i);
-			x+=di;
+			x+=di+2;
 			ctx.fillStyle = "#656654";
 			ctx.fillRect(x,y,dsm,-sm);
-			x+=dsm;
+			x+=dsm+2;
 			ctx.fillStyle = "#565765";
 			ctx.fillRect(x,y,dt,-t);
-			x+=dt;
+			x+=dt+2;
 			ctx.fillStyle = "#874876";
 			ctx.fillRect(x,y,dh,-h);
 			
@@ -155,6 +178,11 @@ function outcanvastr(){
 function outcanvasg(){	
 	var g=0,b=0,dg=0,db=0;
 	
+	removeChildren(badleg);
+	
+	/*alert('g'+g+' b'+b);
+	alert('dg'+dg+' db'+db);*/
+	
 	getStorage(storeGB, function(res){
 			for(var field in res){
 				if(res[field].good==true) {g+=15; dg+=5;}
@@ -164,6 +192,20 @@ function outcanvasg(){
 			/*alert('g'+g+' b'+b);
 			alert('dg'+dg+' db'+db);*/
 			
+			if(g<30 && b<30){
+				g=g*5;
+				b=b*5;
+			}
+			else if(g<50 && b<50){
+				g=g*3;
+				b=b*3;
+			}
+			else if(g<75 && b<75){
+				g=g*2;
+				b=b*2;
+			}
+			
+			/*alert('g'+g+' b'+b);*/
 			
 			var x=0, y=200;
 			var tr = document.getElementById("canbad");
@@ -173,14 +215,14 @@ function outcanvasg(){
 			
 			ctx.fillStyle = "#129321";
 			ctx.fillRect(x,y,g,-dg);
-			y-=dg+db+10;
+			y-=dg+db+2;
 			ctx.fillStyle = "#444432";
 			ctx.fillRect(x,y,b,-db);
 			
 			
 					$('#badleg').append(
 					'<ul>'+
-					'<li style="color:#129321">Ок</li>'+
+					'<li style="color:#129321">Все хорошо</li>'+
 					'<li style="color:#444432">Запрашивал помощь</li>'+
 					'</ul>');
 			

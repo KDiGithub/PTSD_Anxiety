@@ -26,7 +26,7 @@
 
 <!-- ГОТОВО: ГЛАВНАЯ СТРАНИЦА (запись приступа)-->
     <div data-role="page" id="main" align="center">
-    	<script> code("1"); </script>
+    	<!-- <script> code("1"); </script> -->
         <div class="contents">
 			<p>Привет. Рад тебя видеть.</p>
 			<p>Как ты себя чувствуешь?</p>
@@ -36,21 +36,20 @@
 				<p><a href="#chat" data-role="button" onClick="newHelp('need_help')">Помощь: Чат</a></p>
 				<p><a href="#anxiety" data-role="button" onClick="newHelp('need_help')">Помощь: Паническая атака</a></p>			
         </div>
-        <div data-role="footer"><a href="#user" data-role="button">Авторизация</a></div>
     </div>
     
-<!-- ГОТОВО: ОТВЕТ: хорошо (предложение заглянуть в меню) -->    
+<!-- ГОТОВО: ОТВЕТ: хорошо (вход в меню) -->    
     <div data-role="page" id="good" align="center">
     	<script> code("2"); </script>
         <div class="contents">
 			<p>Здорово, что ты справляешься.</p>
 			<p>Если тебе что-то нужно, можешь зайти в меню.</p>	
-			<button id="gb" onClick="outGB()">GB</button>
+			<!-- <button id="gb" onClick="outGB()">GB</button> -->
         </div>
     </div>
    
    
-<!-- ОБЩАЯ ИНФОРМАЦИЯ -->    
+<!-- ГОТОВО: ОБЩАЯ ИНФОРМАЦИЯ -->    
     <div data-role="page" id="info" >
     	<script> code("3"); </script>
         <div class="contents">
@@ -75,12 +74,14 @@
         </div>
     </div>
     
-<!-- ВЫВОД ДАННЫХ (из базы, графики, предложение бэкапа) -->    
+<!-- ВЫВОД ДАННЫХ (графики, предложение бэкапа) -->    
     <div data-role="page" id="out" align="center">
     	<script> code("4"); </script>
         <div class="contents">
-        	<canvas height='200' width='300' id='cantrig'></canvas>
-        	<canvas height='200' width='300' id='canbad'></canvas>
+        	Триггеры:
+        	<canvas height='200' width='300' id='cantrig'></canvas><br>
+        	Нужна ли была помощь:
+        	<canvas height='200' width='300' id='canbad'></canvas><br>
         	<p>
         	<input type=button value="Графики" onClick="outcanvastr(), outcanvasg()">
         	<div id="triggleg"></div>

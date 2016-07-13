@@ -20,15 +20,15 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>aBosuSv1WDVkSXsPZyndtQpctajgfClhu0xoZrAJ/s0=</DigestValue>
+<DigestValue>EXfAbYRFFM8iKplmWk8FDGoFLocnyL3g1rG8WKnlTkg=</DigestValue>
 </Reference>
 <Reference URI="js%2Findexeddb.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>2eCbRdH+Nn9hZdYq38H03nkx0MGISmhdpdUmVSO1AYo=</DigestValue>
+<DigestValue>Qi8own9DIp6mEg/IdL5SFOBdwVyQ9jxle+vv0rNzlZQ=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Ahoy3cZYRGHvnDr7iDDIKBb5xVl2+tO6LRhjfqad/eQ=</DigestValue>
+<DigestValue>UWEJcAAzMBnHMyLtM+RF58ldFEWO4LIlK/1AHfLkoy8=</DigestValue>
 </Reference>
 <Reference URI="js%2FstopwatchANDchat.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -807,11 +807,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-mSY6L5Ivc0Uav2yOFGzdoP6mUe7pbsqenAZT07OTzOJpZ51jyYBhFbo/de5LYaFSgJrn6f79x2pC
-+ueP+gDH3e4Hqq1yte8mpxDYZcXB/8QK2St7TmJOijByIqtxO76DmFT2cyxbjqOlMMvbCF1Q6XUt
-/YIi6Z5sK21sTrIODT11mkk5ICVqi1XqSh/PSw9+HROwW5BgYrENqC6Z85T2H1J7VlY7uyJ6gN69
-nvjrN59Eqehh7vEuYwfRRWyhwMmRWCOj05QyVoBDjc5s9lpXd6+bVd4EG3rB1ngLaoqz5Uh9yWHh
-Oij2tJIUvth5PhiN52hxn7pH4jsqmLIeL7Ei+Q==
+T5N2+nAmkNYdsf1ayLQpcA/msHNZGj6ZH+0Gsh/I/CXJ7MopbgsHw1qipghPO3DSxM7wC1v8IL45
+9FcwG1pfsI61KYWDYThuPsS72LKGnu25KoBiUiLR26uSabjF3mysXsVeIRSaiOyfCP+SIFFvk1/J
+V4OtRbD6Vl0ucTdjPF9Rw1AJX6Rf1kSyOUPRjcwZD5tVDDgcKnGJ7cQyiwYXzzkmKhFpzxarev/y
+nUh1Q0iLyt8XyXuSV49HFFv2xW9/WDTXlGnh4x8zFFX5i4/mUKamNTQSDn6HCoZ8kaxHtsY0XIR2
+CpzuCziDlWBi4eneaujK3/UEGasHd0hpG7FkvQ==
 </SignatureValue>
 <KeyInfo>
 <X509Data>
