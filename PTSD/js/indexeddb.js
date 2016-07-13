@@ -12,6 +12,57 @@ function removeChildren(elem) {
   }
 }
 
+//РЕГИСТРАЦИЯ (хостинг)
+function Registr(){
+	if($("#passreg").val()==$("#passregtrue").val()){
+		$.ajax({
+			type: "post",
+			url:"http://92.53.96.13",
+			datatype:"json",
+			data:JSON.stringify({username: $("#logreg").val(), password:$("#passreg").val()}),
+			success: function(response){
+				jsn_res=JSON.parse(response);
+			},
+			error: function(response){
+		
+			}
+		})
+	}
+	else {alert('Пароли не совпадают');}
+}
+
+//АВТОРИЗАЦИЯ (хостинг)
+function logIn(){
+	$.ajax({
+		type:"get",
+		url:"http://92.53.96.13",
+		datatype:"",
+		success: function(response){
+			
+		},
+		error: function(response){
+			
+		}
+	})
+}
+
+//ВЫГРУЗКА
+function outhost(){
+	$.ajax({
+		type: "post",
+		url:"http://92.53.96.13",
+		datatype:"",
+		data:,
+		success: function(response){
+			
+		},
+		error: function(response){
+			
+		}
+	})
+}
+
+//КОНТАКТЫ В БАЗУ
 function newContact(){	
 	var i=0, arr=[];
 
@@ -25,6 +76,7 @@ function newContact(){
 
 }
 
+//ВЫВЕСТИ КОНТАКТЫ
 function contactList()
 {
 	removeChildren(contactContent);
@@ -49,6 +101,7 @@ function contactList()
 	document.write(mess);*/
 }
 
+//ТРИГГЕРЫ В БАЗУ
 function newTriggers(){
 	var i=0, arr=[];
 	var d=new Date(), day=d.getDate(), month=d.getMonth() + 1, year=d.getFullYear();
@@ -63,6 +116,7 @@ function newTriggers(){
 		
 }
 
+//GB В БАЗУ
 function newHelp(id){
 	var i=0, arr=[], g=false, nh=false;
 	var d=new Date(), day=d.getDate(), month=d.getMonth() + 1, year=d.getFullYear();
@@ -77,26 +131,7 @@ function newHelp(id){
 	i++;
 }
 
-function outGB(){
-	var mess='<ul data-role="listview" id="contactContent" data-inset="true">'
-		getStorage(storeGB, function(res){
-				for(var field in res){
-						/*for(var fieldValue in (value=res[field]))
-							{*/
-								/*switch(fieldValue)
-									{
-										case 'name':*/
-											var name=res[field].good;/*value[fieldValue].name;*/
-										/*case 'phone':*/
-											var phone=res[field].need_help;/*value[fieldValue].phone;*/
-									/*}*/
-							/*}*/
-	
-						alert(phone+''+name);
-				}
-		});
-}
-	
+//ТРИГГЕРЫ В КАНВАС
 function outcanvastr(){	
 	var p=0,s=0,i=0,sm=0,t=0,h=0,dp=0,ds=0,di=0,dsm=0,dt=0,dh=0;
 	removeChildren(triggleg);
@@ -143,38 +178,38 @@ function outcanvastr(){
 			
 			ctx.clearRect(0, 0, tr.width, tr.height);
 			
-			ctx.fillStyle = "#129321";
+			ctx.fillStyle = "#d35656";
 			ctx.fillRect(x,y,dp,-p);
 			x+=dp+2;
-			ctx.fillStyle = "#438432";
+			ctx.fillStyle = "#d38456";
 			ctx.fillRect(x,y,ds,-s);
 			x+=ds+2;
-			ctx.fillStyle = "#347543";
+			ctx.fillStyle = "#cebe62";
 			ctx.fillRect(x,y,di,-i);
 			x+=di+2;
-			ctx.fillStyle = "#656654";
+			ctx.fillStyle = "#8cbc7b";
 			ctx.fillRect(x,y,dsm,-sm);
 			x+=dsm+2;
-			ctx.fillStyle = "#565765";
+			ctx.fillStyle = "#7bafbc";
 			ctx.fillRect(x,y,dt,-t);
 			x+=dt+2;
-			ctx.fillStyle = "#874876";
+			ctx.fillStyle = "#867bbc";
 			ctx.fillRect(x,y,dh,-h);
 			
 					$('#triggleg').append(
 					'<ul>'+
-					'<li style="color:#129321">Место</li>'+
-					'<li style="color:#438432">Звук</li>'+
-					'<li style="color:#347543">Визуальный образ</li>'+
-					'<li style="color:#656654>Запах</li>'+
-					'<li style="color:#656654>Запах</li>'+
-					'<li style="color:#565765">Прикосновение</li>'+
-					'<li style="color:#874876">Человек</li>'+
+					'<li style="color:#d35656">Место</li>'+
+					'<li style="color:#d38456">Звук</li>'+
+					'<li style="color:#cebe62">Визуальный образ</li>'+
+					'<li style="color:#8cbc7b">Запах</li>'+
+					'<li style="color:#7bafbc">Прикосновение</li>'+
+					'<li style="color:#867bbc">Человек</li>'+
 					'</ul>');
 			
 	});
 }
 
+//GB В КАНВАС
 function outcanvasg(){	
 	var g=0,b=0,dg=0,db=0;
 	
@@ -185,8 +220,8 @@ function outcanvasg(){
 	
 	getStorage(storeGB, function(res){
 			for(var field in res){
-				if(res[field].good==true) {g+=15; dg+=5;}
-				if(res[field].need_help==true) {b+=15; db+=5;}
+				if(res[field].good==true) {g+=10; dg+=3;}
+				if(res[field].need_help==true) {b+=10; db+=3;}
 			}
 			
 			/*alert('g'+g+' b'+b);
@@ -213,32 +248,24 @@ function outcanvasg(){
 			
 			ctx.clearRect(0, 0, tr.width, tr.height);
 			
-			ctx.fillStyle = "#129321";
+			ctx.fillStyle = "#7bafbc";
 			ctx.fillRect(x,y,g,-dg);
 			y-=dg+db+2;
-			ctx.fillStyle = "#444432";
+			ctx.fillStyle = "#d35656";
 			ctx.fillRect(x,y,b,-db);
 			
 			
 					$('#badleg').append(
 					'<ul>'+
-					'<li style="color:#129321">Все хорошо</li>'+
-					'<li style="color:#444432">Запрашивал помощь</li>'+
+					'<li style="color:#7bafbc">Все хорошо</li>'+
+					'<li style="color:#d35656">Запрашивал помощь</li>'+
 					'</ul>');
 			
 	});
 }
-	
-
-function Registr(){
-	
-}
-
-function logIn(){
-	
-}
 
 
+//БАЗА ДАННЫХ
 
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB,
 IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction,

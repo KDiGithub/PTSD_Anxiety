@@ -8,7 +8,7 @@ var clocktimer,dateObj,dm,ds,ms;
 var readout=''; 
 var h=1, m=1, tm=1,s=0,ts=0,ms=0,show=true, init=0, ii=0; 
 
-//функция для очистки поля
+//очистка
 function clearСlock() { 
 	clearTimeout(clocktimer); 
 	m=1;tm=1;s=0;ts=0;ms=0; 
@@ -17,7 +17,7 @@ function clearСlock() {
 	document.getElementById('stopwatch').value=readout; 
 	ii = 0; 
 } 
-//функция для старта секундомера
+//старт
 function startTIME() { 
 	var cdateObj = new Date(); 
 	var t = (cdateObj.getTime() - dateObj.getTime())-(s*1000); 
@@ -47,7 +47,7 @@ function startTIME() {
 	clocktimer = setTimeout("startTIME()",1); 
 } 
 
-//функция для паузы
+//пауза
 function pause() { 
 	if (init==0) { dateObj = new Date(); 
 	startTIME(); 
@@ -58,16 +58,18 @@ function pause() {
 } 
 
 //CHAT
-function clearChat(){
-	document.getElementById('chatarea').value="";
-}
-
 function addChat(){
 	var strch=document.getElementById('chatin');
 	document.getElementById('chatarea').value+=strch.value+'\n';
 	strch.value="";
 }
 
+//очистить
+function clearChat(){
+	document.getElementById('chatarea').value="";
+}
+
+//переключение
 function changeCol(val){
 	if (val=="one"){
 		/*document.getElementById('chatarea').style.color="red";*/
