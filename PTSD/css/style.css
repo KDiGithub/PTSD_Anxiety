@@ -22,8 +22,8 @@ body {
 
 textarea {
 	overflow: auto;
-    width: 200px;
-    min-height: 300px;
+    width: 300px;
+    min-height: 250px;
 }
 
 

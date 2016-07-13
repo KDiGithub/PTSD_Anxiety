@@ -82,7 +82,9 @@
         	<canvas height='200' width='300' id='cantrig'></canvas>
         	<canvas height='200' width='300' id='canbad'></canvas>
         	<p>
-        	<input type=button value="Графики" onClick="outcanvas()">
+        	<input type=button value="Графики" onClick="outcanvastr(), outcanvasg()">
+        	<div id="triggleg"></div>
+        	<div id="badleg"></div>
         	<input type=button value="Сохранение" onClick="outhost()">
         	</p>
         </div>
@@ -129,7 +131,7 @@
     	<script> code("8"); </script>
         <div class="contents">
 			<p>CHAT</p>
-			<textarea id="chatarea" readonly rows=40 cols=30></textarea>
+			<textarea id="chatarea" readonly cols=30 style="overflow: auto;"></textarea>
 			<input id="chatin">
 			<input type=button id="addch" value="Добавить сообщение" onClick="addChat()">
     		<select id="flip" data-role="flipswitch" onChange="changeCol(value)">

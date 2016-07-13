@@ -97,46 +97,96 @@ function outGB(){
 		});
 }
 	
-function outcanvas(){
-	var tr = document.getElementById("cantrig");
-	var ctx = tr.getContext("2d");
-	/*ctx.clearRect(0, 0, tr.width, tr.height);*/
-	
-	var x0=0, y0=200;
-	var p=0,s=0,i=0,sm=0,t=0,h=0,d=0;
+function outcanvastr(){	
+	var p=0,s=0,i=0,sm=0,t=0,h=0,dp=0,ds=0,di=0,dsm=0,dt=0,dh=0;
 	
 	getStorage(storeT, function(res){
 			for(var field in res){
-				if(res[field].place==true) p+=10;
-				if(res[field].sound==true) s+=10;
-				if(res[field].image==true) i+=10;
-				if(res[field].smell==true) sm+=10;
-				if(res[field].touch==true) t+=10;
-				if(res[field].human==true) h+=10;
-				d++;
+				if(res[field].place==true) {p+=5; dp+=1;}
+				if(res[field].sound==true) {s+=5; ds+=1;}
+				if(res[field].image==true) {i+=5; di+=1;}
+				if(res[field].smell==true) {sm+=5; dsm+=1;}
+				if(res[field].touch==true) {t+=5; dt+=1;}
+				if(res[field].human==true) {h+=5; dh+=1;}
 			}
+			
+			/*alert('p'+p+' s'+s+' i'+i+' sm'+sm+' t'+t+' h'+h);
+			alert('dp'+dp+' ds'+ds+' di'+di+' dsm'+dsm+' dt'+dt+' dh'+dh);*/
+			
+			
+			var x=0, y=200;
+			var tr = document.getElementById("cantrig");
+			var ctx = tr.getContext("2d");
+			
+			ctx.clearRect(0, 0, tr.width, tr.height);
+			
+			ctx.fillStyle = "#129321";
+			ctx.fillRect(x,y,dp,-p);
+			x+=dp;
+			ctx.fillStyle = "#438432";
+			ctx.fillRect(x,y,ds,-s);
+			x+=ds;
+			ctx.fillStyle = "#347543";
+			ctx.fillRect(x,y,di,-i);
+			x+=di;
+			ctx.fillStyle = "#656654";
+			ctx.fillRect(x,y,dsm,-sm);
+			x+=dsm;
+			ctx.fillStyle = "#565765";
+			ctx.fillRect(x,y,dt,-t);
+			x+=dt;
+			ctx.fillStyle = "#874876";
+			ctx.fillRect(x,y,dh,-h);
+			
+					$('#triggleg').append(
+					'<ul>'+
+					'<li style="color:#129321">Место</li>'+
+					'<li style="color:#438432">Звук</li>'+
+					'<li style="color:#347543">Визуальный образ</li>'+
+					'<li style="color:#656654>Запах</li>'+
+					'<li style="color:#656654>Запах</li>'+
+					'<li style="color:#565765">Прикосновение</li>'+
+					'<li style="color:#874876">Человек</li>'+
+					'</ul>');
+			
 	});
-	
-	x=x0;
-	ctx.fillStyle = "#2222222";
-	ctx.fillRect(x0,y0,d,-p);
-	x+=d
-	ctx.fillStyle = "#333333";
-	ctx.fillRect(x0,y0,d,-s);
-	x+=d
-	ctx.fillStyle = "#444444";
-	ctx.fillRect(x0,y0,d,-i);
-	x+=d
-	ctx.fillStyle = "#555555";
-	ctx.fillRect(x0,y0,d,-sm);
-	x+=d
-	ctx.fillStyle = "#666666";
-	ctx.fillRect(x0,y0,d,-t);
-	x+=d
-	ctx.fillStyle = "#777777";
-	ctx.fillRect(x0,y0,d,-h);
-
 }
+
+function outcanvasg(){	
+	var g=0,b=0,dg=0,db=0;
+	
+	getStorage(storeGB, function(res){
+			for(var field in res){
+				if(res[field].good==true) {g+=15; dg+=5;}
+				if(res[field].need_help==true) {b+=15; db+=5;}
+			}
+			
+			/*alert('g'+g+' b'+b);
+			alert('dg'+dg+' db'+db);*/
+			
+			
+			var x=0, y=200;
+			var tr = document.getElementById("canbad");
+			var ctx = tr.getContext("2d");
+			
+			ctx.clearRect(0, 0, tr.width, tr.height);
+			
+			ctx.fillStyle = "#129321";
+			ctx.fillRect(x,y,g,-dg);
+			y-=dg+db+10;
+			ctx.fillStyle = "#444432";
+			ctx.fillRect(x,y,b,-db);
+			
+			
+					$('#badleg').append(
+					'<ul>'+
+					'<li style="color:#129321">Ок</li>'+
+					'<li style="color:#444432">Запрашивал помощь</li>'+
+					'</ul>');
+			
+	});
+}
+	
 
 function Registr(){
 	
@@ -150,7 +200,7 @@ function logIn(){
 
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB,
 IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction,
-baseName="ptsdBase2",
+baseName="ptsdBase",
 storeGB="GoodBadAns",
 storeT="TriggersTypes",
 storeC="ContactsList"
