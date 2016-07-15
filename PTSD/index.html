@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Tizen Mobile Web" />
+
+    <title>PTSD and anxiety</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="lib/jquery.mobile-1.4.5.min.css" />
+    
+    <script src="js/main.js"></script>
+    <script src="js/indexeddb.js"></script>
+    <script src="js/host.js"></script>
+    <script src="js/stopwatchANDchat.js"></script>
+    
+    <script src="lib/jquery.js"></script>
+    <script src="lib/jquery-2.0.0.min.js"></script>
+    <script src="lib/jquery.mobile-1.4.5.min.js"></script>
+   
+    
+</head>
+
+<body>
+
+<!-- ГОТОВО: ГЛАВНАЯ СТРАНИЦА (запись приступа)-->
+    <div data-role="page" id="main" align="center">
+    	<!-- <script> code("1"); </script> -->
+        <div class="contents">
+			<p>Привет<i id="hello"></i>. Рад тебя видеть.</p>
+			<p>Как ты себя чувствуешь?</p>
+			<p style="font-size: 10px;">Твой ответ будет записан</p>
+			<p><a href="#good" data-role="button" onClick="newHelp('good')">Все хорошо</a></p>	
+			<p><a href="#contacts" data-role="button" onClick="contactList(); newHelp('need_help')">Помощь: Связаться с контактом</a></p>
+				<p><a href="#chat" data-role="button" onClick="newHelp('need_help')">Помощь: Чат</a></p>
+				<p><a href="#anxiety" data-role="button" onClick="newHelp('need_help')">Помощь: Паническая атака</a></p>			
+        </div>
+        <div data-role="footer">
+        	<div id="inout"><script>goinout();</script></div>
+        </div>
+    </div>
+    
+<!-- ГОТОВО: ОТВЕТ: хорошо (вход в меню) -->    
+    <div data-role="page" id="good" align="center">
+    	<script> code("2"); </script>
+        <div class="contents">
+			<p>Здорово, что ты справляешься.</p>
+			<p>Если тебе что-то нужно, можешь зайти в меню.</p>	
+        </div>
+    </div>
+   
+   
+<!-- ГОТОВО: ОБЩАЯ ИНФОРМАЦИЯ -->    
+    <div data-role="page" id="info" >
+    	<script> code("3"); </script>
+        <div class="contents">
+        	<h3 align="center">ПТСР - Oсновные группы симптомов</h3>
+        	<div>
+        		<ul>
+        			<li>Повторное проживание психотравмирующего события;</li>
+        			<li>Избегание вещей, которые напоминают о психотравмирующем событии;</li>
+        			<li>Увеличенное беспокойство, тревога, нарушение сна, чувство вины;</li>
+        			<li>Панические атаки, депрессия, мысли о суициде.</li>
+        		</ul>
+        	</div>
+        	<h3 align="center">Панические атаки - Oсновные группы симптомов</h3>
+        	<div>
+        		<ul>
+        			<li>Вегетативные симптомы(усиленное сердцебиение, тремор);</li>
+        			<li>Симптомы, относящиеся к дискоморту в грудной клетке(удушье, ком в горле);</li>
+        			<li>Симптомы, влияющие на психическое состояние(головокружение, страх, ощущение нереальности);</li>
+        			<li>Остальные(озноб, онемение).</li>
+        		</ul>
+        	</div>
+        </div>
+    </div>
+    
+<!-- ВЫВОД ДАННЫХ (графики, предложение бэкапа) -->    
+    <div data-role="page" id="out" align="center">
+    	<script> code("4"); </script>
+        <div class="contents">
+        	Триггеры:
+        	<canvas height='200' width='300' id='cantrig'></canvas><br>
+        	Нужна ли была помощь:
+        	<canvas height='200' width='300' id='canbad'></canvas><br>
+        	<input type=button value="Графики" onClick="outcanvastr(), outcanvasg()">
+        	<div id="triggleg"></div>
+        	<div id="badleg"></div>
+        	<!-- <input type=button value="Сохранение" onClick="outhost()"> -->
+        </div>
+    </div>
+    
+<!-- ГОТОВО: ВВОД КОНТАКТА (ответ в базу) -->    
+    <div data-role="page" id="contact-in" align="center">
+    	<script> code("5"); </script>
+        <div class="contents">
+			<p>
+				Имя контакта:<input id="contactname">
+				Телефон:<input id="phonenum" type=tel>
+				<input type=button value="Сохранить" onClick="newContact()">
+			</p>
+        </div>
+    </div>
+    
+<!-- ГОТОВО: ВВОД ТРИГГЕРА (ответ в базу) -->    
+    <div data-role="page" id="trigger-in" align="center">
+    	<script> code("6"); </script>
+        <div class="contents">
+			<p>Cписок триггеров:</p>
+			<label><input type=checkbox name="trigin" id="place">Место</label>
+			<label><input type=checkbox name="trigin" id="sound">Звук</label>
+			<label><input type=checkbox name="trigin" id="image">Визуальный образ</label>
+			<label><input type=checkbox name="trigin" id="smell">Запах</label>
+			<label><input type=checkbox name="trigin" id="touch">Прикосновение</label>
+			<label><input type=checkbox name="trigin" id="human">Человек</label>
+        	<input type=button value="Сохранить" onClick="newTriggers()">
+        </div>
+    </div>
+    
+<!-- ГОТОВО: КОНТАКТЫ (из базы, звонок) -->    
+    <div data-role="page" id="contacts" align="center">
+    	<script> code("7"); </script>
+    	<div class="contents">
+    		<p>Экстренные контакты</p>
+        	<div id="contactContent"></div>
+        </div>
+    </div>
+    
+<!-- ГОТОВО: ЧАТ -->    
+    <div data-role="page" id="chat" align="center">
+    	<script> code("8"); </script>
+        <div class="contents">
+			<p>CHAT</p>
+			<textarea id="chatarea" readonly cols=30 style="overflow: auto;"></textarea>
+			<input id="chatin">
+			<input type=button id="addch" value="Добавить сообщение" onClick="addChat()">
+    		<select id="flip" data-role="flipswitch" onChange="changeCol(value)">
+      			<option value="one"></option>
+      			<option value="two"></option>
+    		</select>
+    		<input type=button id="clearch" value="Очистить чат" onClick="clearChat()">
+        </div>
+    </div>
+    
+<!-- ГОТОВО: УПРАЖНЕНИЕ ДЛЯ ДЫХАНИЯ (секундомер и информация) -->    
+    <div data-role="page" id="anxiety" align="center">
+    	<script> code("9"); </script>
+        <div class="contents">
+        	<div>    
+				<input id="stopwatch" size=10 value="00:00" style="text-align:center">  
+				<input type=button value="Запуск/Остановить" onclick="pause()"> 
+				<input type=button value="Обнулить" onclick="clearСlock()">
+        	</div>
+        	<div>
+        		<h3>Контроль дыхания</h3>
+        		<p>Сделайте глубокий насколько возможно вдох, и, после короткой 1-2 секундной паузы – начинайте замедленный постепенный выдох. </p>
+        		<p>Секундомер поможет вам найти нужный ритм.</p>
+        	</div>
+        </div>
+    </div>
+    
+ <!-- АВТОРИЗАЦИЯ И БЭКАП -->
+     <div data-role="page" id="user" align="center">
+    	<script> code("10"); </script>
+        <div class="contents">
+			<p>Авторизация используется для сохранения данных вне устройства и последующего их получения.</p>
+			<!-- <div id="userreg">
+                Логин: <input name="login" id="login" /><br>
+                Пароль: <input type="password" name="passin" /><br>
+                <input name="submit" type="submit" value="Зарегистрироваться">
+             </div> -->
+			<!-- <input name=”sessid” type="hidden" id=”sessid” value="0">
+			<form id=”auth_box_form” name=”auth_box_form” method="GET" action="">
+				<label for=”user_login”>Имя пользователя</label>
+				<input id=”user_login” name=”user_login” />
+				<label for=”user_password”>Пароль</label>
+				<input type="password" id=”user_password” name=”user_password”>
+				<input type="submit" value=”Войти”>
+			</form> -->
+      			<div id="logindiv">
+      				<label for="userin">Логин</label>
+      				<input id="userin" name="userin" size="20" />
+      				<br>
+   			    	<label for="passin">Пароль</label>
+  			    	<input  id="passin" name="passin" size="20" /><!--type="password"  -->
+			    	<br>
+			    	<button type="submit" onClick="LOGIN()">Вход</button>
+ 			    	<a href="#userregistr" data-role="button">Регистрация</a>	
+ 			    </div>
+ 			    <div id="loginResult" style="display:none;"></div>		
+        </div>
+    </div>
+    
+<!-- РЕГИСТРАЦИЯ -->
+  	<div data-role="page" id="userregistr" align="center">
+  	<script> code("11"); </script>
+        <div class="contents">
+			<p>Регистрация</p>
+ 			     
+ 			<div id="regdiv">
+      			<label for="userreg">Логин</label>
+      			<input id="userreg" name="userreg" size="20" />
+      			<br>
+   			   <label for="passreg">Пароль</label>
+  			    <input  id="passreg" name="passreg" size="20" /> <!--type="password" -->
+			    <br>
+			    <button type="submit" onClick="REGISTR()">Регистрация</button>		
+			  </div>
+			  <div id="regResult" style="display:none;"></div>
+    	</div>
+  	</div>
+  	
+ <!-- EXIT -->
+ 	<div data-role="page" id="exit" align="center">
+ 	<script> code("12");</script>
+        <div class="contents">
+        	<p>Вы действительно хотите выйти из профиля? Все несохраненные данные будут утеряны при последующей авторизации.</p>
+        	<button type="submit" onClick="EXIT()">Выйти</button>
+        </div>
+    </div>
+    
+</body>
+
+</html>
